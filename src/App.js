@@ -1,35 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { ThemeProvider } from 'styled-components';
+import { GlobalStyles } from './components/GlobalStyles';
+import { lightTheme, darkTheme } from './components/Themes';
 import styled from 'styled-components';
-import { useInView } from 'react-intersection-observer';
-import ScrollAction from './components/ScrollAction';
-import TestCompTwo from './components/TestCompTwo';
 
-const ScrollWrapper = styled.div`
-    height: 50rem;
-    background-color: black;
+const Test = styled.div`
+    height: 4rem;
+    width: 4rem;
 `;
 
 function App() {
-    const [test, inView] = useInView({
-        threshold: 0.2,
-    });
-
-    const [testTwo, inViewTop] = useInView({
-        threshold: 0.5,
-    });
+    const [theme, setTheme] = useState('light');
+    const themeToggler = () => {
+        theme === 'light' ? setTheme('dark') : setTheme('light');
+    };
 
     return (
-        <div className="App">
-            <TestCompTwo visible={inViewTop}>
-                <div
-                    ref={testTwo}
-                    style={{ height: '100vh', backgroundColor: 'blue' }}
-                ></div>
-            </TestCompTwo>
-            <ScrollWrapper ref={test}>
-                <ScrollAction appear={inView}></ScrollAction>
-            </ScrollWrapper>
-        </div>
+        <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
+            <>
+                <GlobalStyles />
+                <div className="App">
+                    <button onClick={themeToggler}>Switch Theme</button>
+                    <div>Hello</div>
+                    <Test>TESTING</Test>
+                    <Test>HERE I AM</Test>
+                </div>
+            </>
+        </ThemeProvider>
     );
 }
 
