@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://src/index.css"],"names":[],"mappings":"AAAA,EACI,QACJ,CAEA,KACI,iBACJ","file":"main.c8ef5cf5.chunk.css","sourcesContent":["* {\n    margin: 0;\n}\n\nbody {\n    overflow-x: hidden;\n}\n"]}
