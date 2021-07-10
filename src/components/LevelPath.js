@@ -12,7 +12,7 @@ const Space = styled.div`
     height: 5rem;
     width: 5rem;
     border-radius: 50%;
-    background-color: #ffc266;
+    background-color: ${(props) => (props.beaten ? 'green' : 'orange')};
 `;
 
 const Connector = styled.div`
@@ -21,14 +21,14 @@ const Connector = styled.div`
     background-color: black;
 `;
 
-const LevelPath = ({ spaces }) => {
+const LevelPath = ({ beatenLvls }) => {
     return (
         <Container>
-            <Space />
+            <Space beaten={beatenLvls.length >= 1 ? true : false} />
             <Connector />
-            <Space />
+            <Space beaten={beatenLvls.length >= 2 ? true : false} />
             <Connector />
-            <Space />
+            <Space beaten={beatenLvls.length >= 3 ? true : false} />
         </Container>
     );
 };
