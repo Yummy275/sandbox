@@ -1,32 +1,19 @@
-import React, { useState } from 'react';
-import { ThemeProvider } from 'styled-components';
-import { GlobalStyles } from './components/GlobalStyles';
-import { lightTheme, darkTheme } from './components/Themes';
+import React from 'react';
 import styled from 'styled-components';
+import Era from './components/Era';
 
-const Test = styled.div`
-    height: 4rem;
-    width: 4rem;
+const Container = styled.div`
+    width: 300%;
+    display: flex;
 `;
 
 function App() {
-    const [theme, setTheme] = useState('light');
-    const themeToggler = () => {
-        theme === 'light' ? setTheme('dark') : setTheme('light');
-    };
-
     return (
-        <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
-            <>
-                <GlobalStyles />
-                <div className="App">
-                    <button onClick={themeToggler}>Switch Theme</button>
-                    <div>Hello</div>
-                    <Test>TESTING</Test>
-                    <Test>HERE I AM</Test>
-                </div>
-            </>
-        </ThemeProvider>
+        <Container>
+            <Era name="era 1" />
+            <Era name="era 2" />
+            <Era name="era 3" />
+        </Container>
     );
 }
 
